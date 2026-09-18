@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee's Diary - Ray Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading-screen" class="hidden">
+        <h1 style="color: var(--primary);">SYNCING...</h1>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="container">
+        <div class="card" style="max-width: 400px; margin: 100px auto; text-align: center;">
+            <h2 style="color: var(--primary); margin-bottom: 5px;">Employee's Diary</h2>
+            <p style="color: #888; font-size: 14px; margin-bottom: 30px;">Check your attendance</p>
+            
+            <input type="text" id="mobile-input" class="input-field" placeholder="Enter Mobile Number">
+            <div id="login-error" class="text-danger hidden" style="margin-bottom: 15px;">Mobile number not found.</div>
+            
+            <button class="btn btn-success" onclick="login()">LOGIN</button>
+        </div>
+    </div>
+
+    <!-- Calendar Dashboard -->
+    <div id="dashboard-screen" class="hidden">
+        <div class="header">
+            <div style="flex:1;">Employee's Diary</div>
+            <a href="#" style="color: var(--danger); text-decoration: none;" onclick="logout()">Logout</a>
+        </div>
+        
+        <div class="container">
+            <div class="card" style="margin-top: 20px;">
+                <h2 id="welcome-text" style="margin-top: 0;">Welcome</h2>
+                <p id="role-text" style="color: var(--primary); font-weight: bold; margin-top: -10px;"></p>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; margin-bottom: 15px;">
+                    <button class="btn btn-outline" style="width: auto; margin:0;" onclick="changeMonth(-1)">&#8592; Prev</button>
+                    <h3 id="month-display" style="margin: 0;">September 2026</h3>
+                    <button class="btn btn-outline" style="width: auto; margin:0;" onclick="changeMonth(1)">Next &#8594;</button>
+                </div>
+                
+                <div class="calendar-grid">
+                    <div class="cal-header">Sun</div>
+                    <div class="cal-header">Mon</div>
+                    <div class="cal-header">Tue</div>
+                    <div class="cal-header">Wed</div>
+                    <div class="cal-header">Thu</div>
+                    <div class="cal-header">Fri</div>
+                    <div class="cal-header">Sat</div>
+                    
+                    <!-- Days will be generated here -->
+                </div>
+                
+                <div id="calendar-days" class="calendar-grid"></div>
+            </div>
+            
+            <div class="card" style="margin-top: 20px;">
+                <h3 style="margin-top:0;">Monthly Summary</h3>
+                <div style="display: flex; justify-content: space-around; text-align: center;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: var(--success);" id="sum-present">0</div>
+                        <div style="font-size: 12px; color: #888;">Days Present</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: var(--primary);" id="sum-shifts">0</div>
+                        <div style="font-size: 12px; color: #888;">Shifts Worked</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
