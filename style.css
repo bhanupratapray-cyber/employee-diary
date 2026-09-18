@@ -1,0 +1,86 @@
+﻿:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #222;
+    --header-bg: #1a1a1a;
+    --border-color: #333;
+    --primary: #ffc409;
+    --success: #2dd36f;
+    --danger: #eb445a;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+.card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
+.hidden { display: none !important; }
+
+.header {
+    background: var(--header-bg);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.input-field {
+    width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px;
+    border: 1px solid var(--border-color); background: #1a1a1a; color: white;
+    box-sizing: border-box; font-size: 16px;
+}
+
+.btn {
+    width: 100%; padding: 12px; border-radius: 8px; border: none;
+    font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s;
+}
+.btn-success { background: var(--success); color: #000; }
+.btn-outline { background: transparent; border: 1px solid var(--border-color); color: white; }
+.btn:hover { opacity: 0.9; }
+.text-danger { color: var(--danger); }
+
+#loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 1000;
+}
+
+/* Calendar Styles */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.cal-header {
+    font-size: 12px;
+    color: #888;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.cal-day {
+    aspect-ratio: 1;
+    background: #1a1a1a;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2px;
+}
+.cal-day.empty { background: transparent; border: none; }
+.cal-day .date-num { font-size: 14px; font-weight: bold; margin-bottom: 4px; }
+.cal-day .shift-tag { font-size: 9px; background: var(--primary); color: #000; padding: 2px 4px; border-radius: 3px; margin-top: 2px; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.cal-day.present { border-color: var(--success); background: rgba(45, 211, 111, 0.1); }
+.cal-day.absent { border-color: var(--danger); background: rgba(235, 68, 90, 0.1); }
+.cal-day.absent .date-num { color: var(--danger); }
+
