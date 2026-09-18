@@ -17,6 +17,13 @@ body {
 }
 
 .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+@media (max-width: 480px) {
+    .container { padding: 10px; }
+    .card { padding: 15px; }
+    .header { padding: 10px 15px; font-size: 16px; }
+    .cal-day .date-num { font-size: 12px; }
+    .cal-day .shift-tag { font-size: 8px; }
+}
 .card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); }
 .hidden { display: none !important; }
 
@@ -53,8 +60,8 @@ body {
 /* Calendar Styles */
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
     text-align: center;
 }
 
@@ -76,10 +83,13 @@ body {
     justify-content: center;
     position: relative;
     padding: 2px;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
 }
 .cal-day.empty { background: transparent; border: none; }
-.cal-day .date-num { font-size: 14px; font-weight: bold; margin-bottom: 4px; }
-.cal-day .shift-tag { font-size: 9px; background: var(--primary); color: #000; padding: 2px 4px; border-radius: 3px; margin-top: 2px; width: 80%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.cal-day .date-num { font-size: 14px; font-weight: bold; margin-bottom: 2px; }
+.cal-day .shift-tag { font-size: 9px; background: var(--primary); color: #000; padding: 2px; border-radius: 3px; margin-top: 1px; width: 95%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-sizing: border-box;}
 .cal-day.present { border-color: var(--success); background: rgba(45, 211, 111, 0.1); }
 .cal-day.absent { border-color: var(--danger); background: rgba(235, 68, 90, 0.1); }
 .cal-day.absent .date-num { color: var(--danger); }
